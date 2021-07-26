@@ -12,15 +12,15 @@ yarn install:dependencies
 echo -e "${BLUE}Done${NC}"
 
 echo -ne "${BLUE}Clearing existing symbols folder...${NC}"
-rm -rf symbols
-mkdir -p symbols
+rm -rf symbols-svg
+mkdir -p symbols-svg
 echo -e "${BLUE}Done${NC}"
 
 echo -ne "Running MUI converter utility...${NC}"
 cd scripts/mui-icon-builder
-babel-node --config-file ./babel.config.js builder.js --output-dir ../../symbols --svg-dir ../../symbols
+babel-node --config-file ./babel.config.js builder.js --output-dir ../../symbols-svg --svg-dir ../../symbols-svg-svg
 cd ../..
-babel symbols --presets=@babel/preset-react,@babel/preset-env --out-dir symbols
+babel symbols-svg --presets=@babel/preset-react,@babel/preset-env --out-dir symbols-svg
 echo -e "${BLUE}Done${NC}"
 
 echo -ne "Creating TypeScript typings...${NC}"
@@ -28,10 +28,10 @@ babel-node --config-file ./scripts/mui-icon-builder/babel.config.js ./scripts/mu
 echo -e "${BLUE}Done${NC}"
 
 echo -ne "Copying NPM package meta files...${NC}"
-cp package.json symbols/package.json
-cp README.md symbols/README.md
-cp LICENSE symbols/LICENSE
-cp CHANGELOG.md symbols/CHANGELOG.md
+cp package.json symbols-svg/package.json
+cp README.md symbols-svg/README.md
+cp LICENSE symbols-svg/LICENSE
+cp CHANGELOG.md symbols-svg/CHANGELOG.md
 echo -e "${BLUE}Done${NC}"
 
 echo -e "\r\n${GREEN}-----------------------------------"

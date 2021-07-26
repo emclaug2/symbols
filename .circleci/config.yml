@@ -8,7 +8,7 @@ jobs:
         steps:
             - checkout
             - restore_cache:
-                key: v1-dependencies--{{ checksum "package.json" }}--{{ checksum "symbols-mui/package.json" }}
+                key: v1-dependencies--{{ checksum "package.json" }}--{{ checksum "symbols-svg-mui/package.json" }}
             - run:
                   name: Install Dependencies
                   command: |
@@ -29,11 +29,11 @@ jobs:
                   paths:
                     - node_modules
                     - icons-mui/node_modules
-                  key: v1-dependencies--{{ checksum "package.json" }}--{{ checksum "symbols-mui/package.json" }}
+                  key: v1-dependencies--{{ checksum "package.json" }}--{{ checksum "symbols-svg-mui/package.json" }}
             - persist_to_workspace:
                   root: .
                   paths:
-                    - symbols
+                    - symbols-svg
 
     publish:
       docker:
@@ -48,11 +48,11 @@ jobs:
               echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" > ~/.npmrc
               echo "//registry.yarnpkg.com/:_authToken=$NPM_TOKEN" >> ~/.npmrc
         - run:
-            name: Publish @pxblue/symbols
-            command: cd symbols && yarn publish:package -b $CIRCLE_BRANCH
+            name: Publish @pxblue/symbols-svg
+            command: cd symbols-svg-svg && yarn publish:package -b $CIRCLE_BRANCH
         - run:
-            name: Publish @pxblue/symbols-mui
-            command: cd symbols-mui && yarn publish:package -b $CIRCLE_BRANCH
+            name: Publish @pxblue/symbols-svg-mui
+            command: cd symbols-svg-mui && yarn publish:package -b $CIRCLE_BRANCH
     tag:
       docker:
         - image: circleci/node:12.9.1-browsers
@@ -60,11 +60,11 @@ jobs:
         - checkout
         - gh/setup
         - run:
-            name: Tag @pxblue/symbols
-            command: cd symbols && yarn tag:package -b $CIRCLE_BRANCH
+            name: Tag @pxblue/symbols-svg
+            command: cd symbols-svg-svg && yarn tag:package -b $CIRCLE_BRANCH
         - run:
-            name: Tag @pxblue/symbols-mui
-            command: cd symbols-mui && yarn tag:package -b $CIRCLE_BRANCH
+            name: Tag @pxblue/symbols-svg-mui
+            command: cd symbols-svg-mui && yarn tag:package -b $CIRCLE_BRANCH
 workflows:
   version: 2
   symbols:

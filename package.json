@@ -9,7 +9,7 @@
     "license": "BSD-3-Clause",
     "scripts": {
         "test:svg": "./scripts/svgBuildTest.sh",
-        "build": "create-svg-sprite --optimize --input './symbols' --output './symbols' --name 'symbols'"
+        "build": "create-svg-sprite --optimize --input './symbols-svg' --output './symbols-svg' --name 'symbols-svg'"
     },
     "files": [
         "iconfont",

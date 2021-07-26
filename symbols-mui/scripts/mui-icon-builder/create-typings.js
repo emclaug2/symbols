@@ -4,8 +4,8 @@ import chalk from 'chalk';
 import fse from 'fs-extra';
 import glob from 'glob';
 
-const SRC_DIR = path.resolve(__dirname, '../../symbols');
-const TARGET_DIR = path.resolve(__dirname, '../../symbols');
+const SRC_DIR = path.resolve(__dirname, '../../symbols-svg');
+const TARGET_DIR = path.resolve(__dirname, '../../symbols-svg');
 
 function normalizeFileName(file) {
   return path.parse(file).name;
